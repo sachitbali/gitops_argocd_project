@@ -35,6 +35,14 @@ pipeline {
                 }
             }
         }
+        stage('Docker remove the image'){
+            steps{
+                script{
+                    "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    "docker rmi ${IMAGE_NAME}:latest"
+                }
+            }
+        }
     }
     
     }
