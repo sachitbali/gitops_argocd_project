@@ -28,7 +28,7 @@ pipeline {
         stage('Push docker image'){
             steps{
                 script{
-                    docker.withRegistry('',REGISTERY_CREDS){
+                    docker.withRegistry('',REGISTRY_CREDS){
                         docker_image.push("$BUILD_NUMBER")
                         docker_image.push('latest')
                     }
@@ -37,9 +37,4 @@ pipeline {
         }
     }
     
-    post {
-        always {
-            cleanWs()
-        }
     }
-}
